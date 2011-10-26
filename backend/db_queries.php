@@ -23,7 +23,7 @@
 		'add_userInfo_by_userID' => 'INSERT INTO '.$_CFG["tables"]["info"].' ('.$_CFG["infotable_fields"]["associated_table"].','.$_CFG["infotable_fields"]["association_id"].','.$_CFG["infotable_fields"]["thing"].','.$_CFG["infotable_fields"]["content"].') VALUES ("0", "@@_V_userid", "@@_V_thing","@@_V_content")',
 		
 		// @@_V_username, @@_V_password, @@_V_now
-		'add_user_by_login' => 'INSERT INTO '.$_CFG["tables"]["users"].' ('.$_CFG["usertable_fields"]["username"].','.$_CFG["usertable_fields"]["password"].','.$_CFG["usertable_fields"]["created_date"].') VALUES ("@@_V_username",MD5("@@_V_password@@_V_now"),"@@_V_now")',
+		'add_user_by_login' => 'INSERT INTO '.$_CFG["tables"]["users"].' ('.$_CFG["usertable_fields"]["username"].','.$_CFG["usertable_fields"]["password"].','.$_CFG["usertable_fields"]["created_date"].') VALUES ("@@_V_username",MD5("@@_V_password"),"@@_V_now")',
 
 		// @@_V_NEWpassword, @@_V_username, @@_V_password
 		'update_userpassword_by_login' => 'UPDATE '.$_CFG["tables"]["users"].' SET '.$_CFG["usertable_fields"]["password"].'=MD5("@@_V_NEWpassword") WHERE MD5('.$_CFG["usertable_fields"]["username"].')="@@_V_username" AND '.$_CFG["usertable_fields"]["password"].'=MD5("@@_V_password@@_V_now")',

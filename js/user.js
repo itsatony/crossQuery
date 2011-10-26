@@ -113,6 +113,7 @@ UserObject.prototype.logout = function() {
 			var JSONdoc = thisUser.myParent.AJAX__ProcessAnswer(doc);
 		}
 	);
+	window.location.reload();
 	return true;
 }
 

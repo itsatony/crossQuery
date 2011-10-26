@@ -398,12 +398,14 @@ CrossQueryObject.prototype.savedQuery__updatePanel = function() {
 	TableLine += "<td><button class='cq__savedQueryTable__Button' id='cq__savedQueryTable_TR@@y_button_delete' onclick='myCrossQuery.savedQuery__delete(@@qindex);'>"+localized_text[myBrowser.language]['CROSSQUERYDIALOG__SAVEDQUERYPANEL__DeleteButtonLabel']+"</button></td>";
 	TableLine += "<td><button class='cq__savedQueryTable__Button' id='cq__savedQueryTable_TR@@y_button_get' onclick='myCrossQuery.savedQuery__use(@@y);'>"+localized_text[myBrowser.language]['CROSSQUERYDIALOG__SAVEDQUERYPANEL__UseButtonLabel']+" @@name</button></td>";
 	TableLine += "</tr>";
-	for (var i=0;i<thisCQ.savedQueries.length;i++) {
-		var thisLine = TableLine.replace(/@@y/g, i);
-		thisLine = thisLine.replace(/@@qindex/g, thisCQ.savedQueries[i].query_index);
-		
-		thisLine = thisLine.replace(/@@name/g, thisCQ.savedQueries[i].query_name);
-		$("#cq__savedQueryTable").append(thisLine);
+	if (typeof thisCQ.savedQueries != "undefined") {
+		for (var i=0;i<thisCQ.savedQueries.length;i++) {
+			var thisLine = TableLine.replace(/@@y/g, i);
+			thisLine = thisLine.replace(/@@qindex/g, thisCQ.savedQueries[i].query_index);
+			
+			thisLine = thisLine.replace(/@@name/g, thisCQ.savedQueries[i].query_name);
+			$("#cq__savedQueryTable").append(thisLine);
+		}
 	}
 	$(".cq__savedQueryTable__Button").button();
 }

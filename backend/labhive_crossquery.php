@@ -1,7 +1,12 @@
 <?php
 	require_once("bootstrap.php");
 	
-	$myUser = $_SESSION[$bid]["userinfo"];
+	//echo $bid;
+	if (isset($_SESSION[$bid]["userinfo"])) {
+		$myUser = $_SESSION[$bid]["userinfo"];
+	} else if (isset($_SESSION[$bid]["user_id"])){
+		$_SESSION[$bid]["userinfo"] = User__GetInfo($_SESSION[$bid]["user_id"]);
+	}
 	
 	$Session = Session__FindInDB(session_id());
 	if ($Session == false) {
@@ -46,8 +51,7 @@
 			"orientation"=>$_POST["orientation"],
 			"limit"=>$_POST["limit"],
 			"name"=>$_POST["name"],
-			"dataset_id"=>$_POST["dataset_id"],
-			
+			"dataset_id"=>$_POST["dataset_id"]			
 		);
 		$res1 = CQ_setSavedQueriesByUserId($uid,$data);
 		if ($res1 == true) {

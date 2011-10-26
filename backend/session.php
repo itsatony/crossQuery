@@ -38,6 +38,9 @@
 		} else {
 			array_push($_SESSION[$bid]["REPLY"]["SUCCESSES"], "DB session check failed");
 			// should not happen
+			while ($row = mysql_fetch_array($Res, MYSQL_ASSOC)) {
+				Session__removeFromDB($row['session_id']);
+			}
 			return false;
 		}
 	} 
