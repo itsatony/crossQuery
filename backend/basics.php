@@ -214,7 +214,7 @@
 		$RepArray = array(
 			"/@@_V_username/" => $username
 		);
-		$myQuery = DB_QueryReplace($_QU["get_userid_by_MD5username"], $RepArray);
+		$myQuery = DB_QueryReplace($_QU["get_userid_by_username"], $RepArray);
 		$Res = mysql_query($myQuery);	
 		$RowCount = mysql_num_rows($Res);
 		if ($RowCount == 1) {
