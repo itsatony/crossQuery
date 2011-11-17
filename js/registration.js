@@ -210,11 +210,11 @@ RegistrationObject.prototype.verify_username = function(event) {
 	var postinfo = {};	// generate an object to pass via POST
 	postinfo.job = "username_availability";		// this is passed to tell the serverside php what we want to do
 	postinfo.browserID = myBrowser.id;  // with this we ID our script instance for the server...
-	postinfo.untest = myUNmd5;
+	postinfo.untest = username;
 	$.post(this.myParent.URL_backend+this.FileName_registration, postinfo,	// POST VIA AJAX!
 		function(doc){	// IF ajax call is returned do this...
 			var username = $("#Registration_username_Input").val();
-			var myUNmd5 = $.md5(username);
+			var myUNmd5 = postinfo.untest;
 			var JSONdoc = thisReg.myParent.AJAX__ProcessAnswer(doc);
 			thisReg.UserNameTests.push({ "username": username, available: JSONdoc.jobresult});
 			if (JSONdoc.jobresult == true && JSONdoc.queriedUserName == myUNmd5) {

@@ -76,7 +76,7 @@
 	}
 	
 	if ($job == "registration") {
-		$exists = User__UserNameExists($_POST["unmd5"]);
+		$exists = User__UserNameExists($_POST["username"]);
 		if ($exists == false) {
 			$result = User__Add($_POST["username"], $_POST["password"]);
 			if ($result==true) {
